@@ -1,0 +1,342 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap");
+/* @import url("https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&display=swap"); */
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  font-family: "Roboto Mono", sans-serif;
+  /* font-family: "Bricolage Grotesque", sans-serif; */
+  font-optical-sizing: auto;
+}
+
+@layer base {
+  :root {
+    --active: 221 83% 53%;
+    --active-foreground: 355.7 100% 97.3%;
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+    --primary: 221.2 83.2% 53.3%;
+    --primary-foreground: 210 40% 98%;
+    --secondary: 210 40% 96.1%;
+    --secondary-foreground: 222.2 47.4% 11.2%;
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+    --accent: 210 40% 96.1%;
+    --accent-foreground: 222.2 47.4% 11.2%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 221.2 83.2% 53.3%;
+    --radius: 0.5rem;
+    --chart-1: 220 70% 50%;
+    --chart-2: 160 60% 45%;
+    --chart-3: 30 80% 55%;
+    --chart-4: 280 65% 60%;
+    --chart-5: 340 75% 55%;
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .dark {
+    --active: 221 83% 53%;
+    --active-foreground: 355.7 100% 97.3%;
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+    --primary: 217.2 91.2% 59.8%;
+    --primary-foreground: 222.2 47.4% 11.2%;
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 224.3 76.3% 48%;
+    --chart-1: 220 70% 50%;
+    --chart-2: 160 60% 45%;
+    --chart-3: 30 80% 55%;
+    --chart-4: 280 65% 60%;
+    --chart-5: 340 75% 55%;
+    --sidebar-background: 222.2 84% 4.9%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border antialiased;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  html {
+    @apply scroll-smooth;
+  }
+  body {
+    @apply bg-background text-foreground overscroll-none;
+    font-synthesis-weight: none;
+    text-rendering: optimizeLegibility;
+  }
+
+  @supports (font: -apple-system-body) and (-webkit-appearance: none) {
+    [data-wrapper] {
+      @apply min-[1800px]:border-t;
+    }
+  }
+  ::-webkit-scrollbar {
+    width: 5px;
+  }
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: hsl(var(--border));
+    border-radius: 5px;
+  }
+  * {
+    scrollbar-width: none;
+    scrollbar-color: hsl(var(--border)) transparent;
+  }
+}
+
+.tiptap {
+  @apply !text-foreground leading-relaxed;
+}
+
+.tiptap h1 {
+  @apply text-3xl font-bold mt-4 mb-2;
+}
+
+.tiptap h2 {
+  @apply text-2xl font-semibold mt-3 mb-1;
+}
+
+.tiptap h3 {
+  @apply text-xl font-semibold mt-3 mb-0.5;
+}
+
+.tiptap p {
+  @apply text-base leading-7 my-1;
+}
+
+.tiptap a {
+  @apply text-blue-600 underline hover:text-blue-700 transition;
+}
+
+.tiptap ul {
+  @apply list-disc list-inside my-4;
+}
+
+.tiptap ol {
+  @apply list-decimal list-inside my-4;
+}
+
+.tiptap li {
+  @apply my-1;
+}
+
+.tiptap blockquote {
+  @apply border-l-4 border-muted pl-4 italic my-4;
+}
+
+.tiptap code {
+  @apply px-1 py-0.5 rounded;
+}
+
+.tiptap pre {
+  @apply p-4 rounded-md overflow-x-auto;
+}
+
+.tiptap pre code {
+  @apply bg-transparent text-inherit p-0;
+}
+
+.tiptap img {
+  @apply rounded-lg shadow-md my-4;
+}
+
+.tiptap table {
+  @apply w-full border-collapse my-4;
+}
+
+.tiptap th,
+.prose td {
+  @apply border border-gray-300 px-4 py-2;
+}
+
+.tiptap th {
+  @apply bg-gray-100 font-semibold;
+}
+
+.tiptap strong {
+  @apply font-bold;
+}
+
+.tiptap em {
+  @apply italic;
+}
+
+.tiptap ul,
+.tiptap ol {
+  padding-left: 1.5rem;
+}
+
+.tiptap ul li,
+.tiptap ol li {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0rem 0;
+}
+
+.tiptap ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+.tiptap ul li::before {
+  content: "\2022";
+  color: var(--accent-color);
+  font-size: 1rem;
+  display: inline-block;
+  width: 0.5rem;
+}
+
+.tiptap ul[data-type="taskList"] li::before {
+  content: "";
+}
+
+.tiptap ol {
+  counter-reset: list-counter;
+  list-style: none;
+  padding-left: 0;
+}
+
+.tiptap ol li {
+  counter-increment: list-counter;
+}
+
+.tiptap ol li::before {
+  content: counter(list-counter) ".";
+  color: var(--accent-color);
+  display: inline-block;
+  width: 1.5rem;
+}
+
+.tiptap {
+  ul[data-type="taskList"] {
+    list-style: none;
+    padding-left: 0;
+  }
+
+  ul[data-type="taskList"] li {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.25rem 0;
+  }
+
+  ul[data-type="taskList"] li label {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  ul[data-type="taskList"] li input[type="checkbox"] {
+    width: 1rem;
+    height: 1rem;
+    border: 2px solid var(--border-color);
+    border-radius: 4px;
+    margin: 0;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+
+  ul[data-type="taskList"] li input[type="checkbox"]:checked {
+    background-color: var(--accent-color);
+    border-color: var(--accent-color);
+  }
+}
+
+.quill-editor .ql-toolbar {
+  border: none !important;
+}
+
+.quill-editor .ql-toolbar .ql-formats:not(:last-child) {
+  border-right: 1px solid var(--muted);
+  padding-right: 12px !important;
+}
+
+.quill-editor .ql-container {
+  font-family: "Roboto Mono", sans-serif !important;
+  border: none !important;
+  height: unset;
+}
+
+.quill-editor .ql-editor {
+  line-height: 22px !important;
+  padding: 8px 12px !important;
+  color: var(--muted-foreground) !important;
+  font-weight: 400 !important;
+  font-family: "Roboto Mono", sans-serif !important;
+  font-size: 14px;
+}
+
+.ql-editor a {
+  color: var(--primary) !important;
+}
+
+.ql-editor a:hover {
+  text-decoration: underline !important;
+}
+
+.ql-renderer {
+  padding: 0px !important;
+}
+
+.ql-editor::before {
+  left: 12px !important;
+  font-family: "Roboto Mono", sans-serif !important;
+  color: var(--card) !important;
+  font-style: normal !important;
+  font-size: 14px !important;
+  font-weight: 400 !important;
+  @apply truncate;
+}
+
+.messages-scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: var(--muted) var(--muted-foreground);
+}
