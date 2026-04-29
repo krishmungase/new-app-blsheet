@@ -29,11 +29,11 @@ import {
 
 const app = express()
 const server = createServer(app)
+
 app.use(morganMiddleware)
 
 export const io = new Server(server, {
   cors: {
-    // origin: [ENV.FRONTEND_URL, ENV.WWW_FRONTEND_URL],
     origin: '*',
     methods: ['GET', 'POST'],
     credentials: true,
@@ -56,7 +56,6 @@ io.on('connection', (socket) => {
 })
 
 const corsOption: cors.CorsOptions = {
-  // origin: ENV.FRONTEND_URL,
   origin: '*',
   credentials: true,
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS', 'PATCH'],
@@ -68,12 +67,20 @@ app.options('*', cors(corsOption))
 app.use(express.json())
 app.use(express.static('public'))
 
+// ✅ ADD THIS (VERY IMPORTANT)
+app.get('/health', (req: Request, res: Response) => {
+  res.status(200).send('OK')
+})
+
 const startServer = async () => {
-  const PORT = ENV.PORT || 5500
+  // ✅ FIX PORT (VERY IMPORTANT)
+  const PORT = ENV.PORT || 5555
+
   try {
     connectDB()
     await agenda.start()
     logger.info({ msg: MSG.DB_CONNECTED })
+
     server.listen(PORT, () =>
       logger.info({ msg: `Server listening on http://localhost:${PORT}` })
     )
