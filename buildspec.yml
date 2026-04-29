@@ -15,4 +15,4 @@ artifacts:
     - scripts/**/*
     - appspec.yml
   exclude-paths:
-    - api-blsheet/node_modules/**/*   # ← don't ship node_modules
+    - api-blsheet/node_modules/**/*
