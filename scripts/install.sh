@@ -4,5 +4,10 @@ set -e
 cd /home/ec2-user/app
 
 npm install
-sudo npm install -g tsx
-sudo npm install -g pm2
+
+# install globally for ec2-user (NOT sudo)
+npm install -g tsx
+npm install -g pm2
+
+# ensure pm2 is in PATH
+export PATH=$PATH:/usr/local/bin
