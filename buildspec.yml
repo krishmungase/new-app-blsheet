@@ -4,9 +4,6 @@ phases:
   install:
     runtime-versions:
       nodejs: 20
-    commands:
-      - cd api-blsheet
-      - npm install
 
   build:
     commands:
@@ -17,3 +14,5 @@ artifacts:
     - api-blsheet/**/*
     - scripts/**/*
     - appspec.yml
+  exclude-paths:
+    - api-blsheet/node_modules/**/*   # ← don't ship node_modules
