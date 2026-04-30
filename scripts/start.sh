@@ -1,15 +1,18 @@
 #!/bin/bash
 set -e
 
-source /etc/profile
+export NVM_DIR="/home/ec2-user/.nvm"
+if [ -s "$NVM_DIR/nvm.sh" ]; then
+  . "$NVM_DIR/nvm.sh"
+fi
+
 export PATH=$PATH:/usr/local/bin
 
-cd /home/ec2-user/app   # ✅ correct path
+cd /home/ec2-user/app
 
 pm2 delete all || true
 
-# start app using PM2 (correct way)
-pm2 start "npx tsx api/index.ts" --name blsheet-backend
+pm2 start "npx tsx index.ts" --name blsheet-backend
 
 pm2 save
 
