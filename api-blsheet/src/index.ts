@@ -1,9 +1,6 @@
 import asyncHandler from 'express-async-handler'
-import express, { Request, Response, NextFunction } from 'express'
+import express, { Request, Response } from 'express'
 import cors from 'cors'
-
-// your existing imports
-// import logger, routes, db, etc...
 
 const app = express()
 
@@ -21,16 +18,23 @@ app.use(express.json())
 app.use(express.static('public'))
 
 // -------------------- HEALTH CHECK --------------------
-app.get('/health', (req: Request, res: Response) => {
+app.get('/health', (_req: Request, res: Response) => {
   res.status(200).send('OK')
 })
 
 // -------------------- ROUTES --------------------
 app.get(
   '/',
-  asyncHandler((req: Request, res: Response, next: NextFunction) => {
-    return res
-      .status(200)
-      .json(new ApiResponse(200, { msg: 'Hello from server!' }))
+  asyncHandler(async (_req: Request, res: Response) => {
+    return res.status(200).json({
+      msg: 'Hello from server!',
+    })
   })
 )
+
+// -------------------- SERVER START --------------------
+const PORT = process.env.PORT || 5555
+
+app.listen(PORT, '0.0.0.0', () => {
+  console.log(`Server running on port ${PORT}`)
+})
